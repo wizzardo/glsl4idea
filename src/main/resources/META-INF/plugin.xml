@@ -28,34 +28,31 @@
     <!-- Since at least 144 (2016), because we require Java 8, which is bundled since then -->
     <!-- https://intellij-support.jetbrains.com/hc/en-us/articles/206544879-Selecting-the-JDK-version-the-IDE-will-run-under -->
     <!-- Until build is not set, because we hope it will work. -->
-    <idea-version since-build="144"/>
+    <idea-version since-build="203.5981.155"/>
     <depends>com.intellij.modules.lang</depends>
 
     <version>1.20-SNAPSHOT</version>
-    <change-notes><![CDATA[
-        <ul>
-            <li></li>
-        </ul>
-    ]]></change-notes>
+    <change-notes>wip</change-notes>
 
-    <actions>
-        <action id="GLSL_DEDUCE_EXPRESSION_TYPE"
-                class="glslplugin.actions.GLSLDeduceExpressionTypeAction"
-                text="Deduce Expression Type"
-                description="Tries to deduce the type of the expression in the selection.">
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt T"
-                               second-keystroke="shift ctrl alt D"/>
-        </action>
+        <actions>
+            <action id="GLSL_DEDUCE_EXPRESSION_TYPE"
+                    class="glslplugin.actions.GLSLDeduceExpressionTypeAction"
+                    text="Deduce Expression Type"
+                    description="Tries to deduce the type of the expression in the selection.">
+                <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt T"
+                                   second-keystroke="shift ctrl alt D"/>
+            </action>
 
-        <action id="GLSL_NEW_SHADER_FILE" class="glslplugin.actions.GLSLCreateNewShaderFile"
-                text="GLSL Shader" description="Create new GLSL shader file">
-            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
-        </action>
-    </actions>
+            <action id="GLSL_NEW_SHADER_FILE" class="glslplugin.actions.GLSLCreateNewShaderFile"
+                    text="GLSL Shader" description="Create new GLSL shader file">
+                <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFromTemplate"/>
+            </action>
+        </actions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileTypeFactory implementation="glslplugin.GLSLSupportLoader"/>
+        <fileType language="GLSL" name="GLSL shader file" fieldName="INSTANCE" extensions="glsl;frag;vert;tesc;tese;geom;comp" implementationClass="glslplugin.lang.GLSLFileType"/>
+
         <colorSettingsPage implementation="glslplugin.GLSLColorAndFontsPage"/>
         <lang.syntaxHighlighterFactory language="GLSL" implementationClass="glslplugin.GLSLHighlighterFactory"/>
         <lang.braceMatcher language="GLSL" implementationClass="glslplugin.GLSLPairedBraceMatcher"/>
@@ -64,8 +61,8 @@
         <lang.psiStructureViewFactory language="GLSL"
                                       implementationClass="glslplugin.structureview.GLSLStructureViewFactory"/>
         <annotator language="GLSL" implementationClass="glslplugin.annotation.GLSLAnnotator"/>
-        <problemFileHighlightFilter implementation="glslplugin.extensions.GLSLProblemFileHighlightFilter" />
-        <codeInsight.parameterInfo language="GLSL" implementationClass="glslplugin.extensions.GLSLParameterInfoHandler" />
+        <problemFileHighlightFilter implementation="glslplugin.extensions.GLSLProblemFileHighlightFilter"/>
+        <codeInsight.parameterInfo language="GLSL" implementationClass="glslplugin.extensions.GLSLParameterInfoHandler"/>
 
         <intentionAction>
             <className>glslplugin.intentions.vectorcomponents.VectorComponentsIntention</className>
@@ -76,13 +73,13 @@
         <additionalTextAttributes scheme="Default" file="colorSchemes/GLSLDefault.xml"/>
         <additionalTextAttributes scheme="Darcula" file="colorSchemes/GLSLDarcula.xml"/>
         <lang.commenter language="GLSL" implementationClass="glslplugin.GLSLCommenter"/>
-        <lang.refactoringSupport language="GLSL" implementationClass="glslplugin.extensions.GLSLRefactoringSupportProvider" />
-        <lang.findUsagesProvider language="GLSL" implementationClass="glslplugin.extensions.GLSLFindUsagesProvider" />
+        <lang.refactoringSupport language="GLSL" implementationClass="glslplugin.extensions.GLSLRefactoringSupportProvider"/>
+        <lang.findUsagesProvider language="GLSL" implementationClass="glslplugin.extensions.GLSLFindUsagesProvider"/>
         <lang.documentationProvider language="GLSL" implementationClass="glslplugin.extensions.GLSLDocumentationProvider"/>
-        <completion.contributor language="GLSL" implementationClass="glslplugin.extensions.GLSLCompletionContributor" />
-        <elementDescriptionProvider implementation="glslplugin.extensions.GLSLDescriptionProvider" />
-        <enterHandlerDelegate implementation="glslplugin.extensions.GLSLEnterHandlerDelegate" />
-        <lang.formatter language="GLSL" implementationClass="glslplugin.formatter.GLSLFormattingModelBuilder" />
+        <completion.contributor language="GLSL" implementationClass="glslplugin.extensions.GLSLCompletionContributor"/>
+        <elementDescriptionProvider implementation="glslplugin.extensions.GLSLDescriptionProvider"/>
+        <enterHandlerDelegate implementation="glslplugin.extensions.GLSLEnterHandlerDelegate"/>
+        <lang.formatter language="GLSL" implementationClass="glslplugin.formatter.GLSLFormattingModelBuilder"/>
 
         <createFromTemplateHandler implementation="glslplugin.GLSLCreateFromTemplateHandler"/>
         <internalFileTemplate name="GLSL Shader"/>

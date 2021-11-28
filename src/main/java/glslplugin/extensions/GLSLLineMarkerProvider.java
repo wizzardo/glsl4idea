@@ -58,8 +58,8 @@ public class GLSLLineMarkerProvider implements LineMarkerProvider {
         return null;
     }
 
-    public void collectSlowLineMarkers(@NotNull List<PsiElement> psiElements, @NotNull Collection<LineMarkerInfo> lineMarkerInfos) {
-        //not sure about the difference
-
-    }
+//    public void collectSlowLineMarkers(@NotNull List<PsiElement> psiElements, @NotNull Collection<LineMarkerInfo> lineMarkerInfos) {
+//        //not sure about the difference
+//
+//    }
 }
